@@ -6,6 +6,8 @@ import styled, { createGlobalStyle } from "styled-components";
 
 import { fontFace } from "./fonts/fontsExport";
 import Main from "./components/Main";
+import { Provider } from "react-redux";
+import { setupStore } from "./store/store";
 
 const Global = createGlobalStyle`
 ${fontFace("Roboto", "../fonts/Roboto/Roboto-Bold.ttf", "normal", "bold")}
@@ -22,11 +24,15 @@ body {
 }
 `;
 
+const store = setupStore();
+
 ReactDOM.render(
   <React.StrictMode>
-    <Global />
-    <Header />
-    <Main />
+    <Provider store={store}>
+      <Global />
+      <Header />
+      <Main />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
