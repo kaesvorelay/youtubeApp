@@ -1,14 +1,20 @@
-import { createAction, createReducer } from "@reduxjs/toolkit";
+import { createAction, createReducer, createSlice } from "@reduxjs/toolkit";
 import { IState } from "../../types/typesState";
-import { getValue } from "../actions/actionGetChanelList";
 
 const initialState = {
-  value: "",
+  channelTittle: "",
+  channelDiscription: "",
+  videoID: "",
+  videoTittle: "",
+  haveData: false,
 } as IState;
 
-export const reducerChanel = createReducer(initialState, (builder) => {
-  builder.addCase(getValue, (state, action) => {
-    state.value += action.payload;
-    console.log(state.value);
-  });
+export const channelSlice = createSlice({
+  name: "channel",
+  initialState,
+  reducers: {
+    addVal(state, action) {},
+  },
 });
+
+export default channelSlice.reducer;

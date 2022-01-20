@@ -1,13 +1,14 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { reducerChanel } from "./reducer/reducer";
+import channelReducer from "./reducer/reducer";
 
 const rootReducer = combineReducers({
-  reducerChanel,
+  channelReducer,
 });
 
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
+    devTools: true,
   });
 };
 

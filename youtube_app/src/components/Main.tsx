@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import Container from "./Container";
@@ -6,8 +6,8 @@ import Input from "./Input";
 import Title from "./Title";
 import Button from "./Button";
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
-import { getValue } from "../store/actions/actionGetChanelList";
-import { getChannel } from "../api/api";
+import { searchChannel } from "../api/api";
+import { channelSlice } from "../store/reducer/reducer";
 
 const StyledMain = styled.main`
   height: 30vh;
@@ -21,15 +21,29 @@ const StyledWrapper = styled.div`
   justify-content: center;
 `;
 
-const Wrapper = ({ children }: { children: React.ReactNode }): ReactElement => {
+const Wrapper = ({ children }: { children: React.ReactNode }) => {
   return <StyledWrapper>{children}</StyledWrapper>;
 };
 
 const Main = () => {
   const dispatch = useAppDispatch();
   const [input, setInput] = useState<string>("");
+  const { addVal } = channelSlice.actions;
   const getValueInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
+  };
+
+  const getValueWitchKeyboard = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (event.key === "Enter") {
+      getChanel();
+    }
+  };
+
+  const getChanel = () => {
+    searchChannel(input).then((data) => console.log(data));
+    dispatch(addVal(input));
   };
 
   return (
@@ -37,8 +51,11 @@ const Main = () => {
       <StyledMain>
         <Title>Find a video and download{"\u00A0"}it! Let's go!</Title>
         <Wrapper>
-          <Input onChange={getValueInput}></Input>
-          <Button onClick={() => getChannel("maxgraph")}></Button>
+          <Input
+            onKeyUp={getValueWitchKeyboard}
+            onChange={getValueInput}
+          ></Input>
+          <Button onClick={getChanel}></Button>
         </Wrapper>
       </StyledMain>
     </Container>
