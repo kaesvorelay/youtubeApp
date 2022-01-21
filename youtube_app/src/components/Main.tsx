@@ -8,6 +8,7 @@ import Button from "./Button";
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
 import { searchChannel } from "../api/api";
 import { channelSlice } from "../store/reducer/reducer";
+import { fetchChannel } from "../store/asyncAction/createAsyncAction";
 
 const StyledMain = styled.main`
   height: 30vh;
@@ -42,8 +43,8 @@ const Main = () => {
   };
 
   const getChanel = () => {
-    searchChannel(input).then((data) => console.log(data));
-    dispatch(addVal(input));
+    // searchChannel(input).then((data) => console.log(data));
+    dispatch(fetchChannel(input));
   };
 
   return (

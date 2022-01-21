@@ -1,7 +1,15 @@
 export interface IState {
-  channelTittle: string;
-  channelDiscription: string;
-  videoID: string;
-  videoTittle: string;
-  haveData: boolean;
+  error: string;
+  loading: boolean;
+  data: Data[];
 }
+
+export type Data = {
+  id: {
+    videoId: string;
+  };
+  snippet: {
+    channelTitle: string;
+    description: string;
+  };
+};

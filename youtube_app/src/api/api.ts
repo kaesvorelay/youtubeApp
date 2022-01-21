@@ -9,6 +9,8 @@ export const searchChannel = (channel: string) => {
     url: "https://www.googleapis.com/youtube/v3/search",
     method: "GET",
     params: {
+      type: "video",
+      videoEmbeddable: true,
       part: "snippet",
       key: apiKey,
       maxResults: 5,
@@ -16,5 +18,5 @@ export const searchChannel = (channel: string) => {
     },
   })
     .then((data) => data.data.items)
-    .catch((error) => error);
+    .catch((error) => error.message);
 };
