@@ -1,10 +1,9 @@
-import { useAppSelector } from "../hooks/reduxHooks";
-import { setupStore } from "../store/store";
 import axios from "axios";
+import { Data } from "../types/typesState";
 
 const apiKey = "AIzaSyA3pqd5XOM9I9Kq9JdctBATeIA4JVNxb4w";
 
-export const searchChannel = (channel: string) => {
+export const searchChannel = (channel: string): Promise<Data[]> => {
   return axios({
     url: "https://www.googleapis.com/youtube/v3/search",
     method: "GET",
@@ -16,7 +15,5 @@ export const searchChannel = (channel: string) => {
       maxResults: 5,
       q: channel,
     },
-  })
-    .then((data) => data.data.items)
-    .catch((error) => error.message);
+  }).then((data) => data.data.items);
 };

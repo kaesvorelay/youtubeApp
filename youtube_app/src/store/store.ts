@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import channelReducer from "./reducer/reducer";
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   channelReducer,
 });
 
@@ -11,7 +11,3 @@ export const setupStore = () => {
     devTools: true,
   });
 };
-
-export type RootState = ReturnType<typeof rootReducer>;
-export type ApplicationStore = ReturnType<typeof setupStore>;
-export type ApplicationDispatch = ApplicationStore["dispatch"];

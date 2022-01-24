@@ -5,9 +5,7 @@ import Container from "./Container";
 import Input from "./Input";
 import Title from "./Title";
 import Button from "./Button";
-import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
-import { searchChannel } from "../api/api";
-import { channelSlice } from "../store/reducer/reducer";
+import { useAppDispatch } from "../hooks/reduxHooks";
 import { fetchChannel } from "../store/asyncAction/createAsyncAction";
 
 const StyledMain = styled.main`
@@ -29,7 +27,6 @@ const Wrapper = ({ children }: { children: React.ReactNode }) => {
 const Main = () => {
   const dispatch = useAppDispatch();
   const [input, setInput] = useState<string>("");
-  const { addVal } = channelSlice.actions;
   const getValueInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
   };
@@ -43,7 +40,6 @@ const Main = () => {
   };
 
   const getChanel = () => {
-    // searchChannel(input).then((data) => console.log(data));
     dispatch(fetchChannel(input));
   };
 

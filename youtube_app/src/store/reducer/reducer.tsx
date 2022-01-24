@@ -1,37 +1,37 @@
-import { map } from "lodash";
-import {
-  createAction,
-  createReducer,
-  createSlice,
-  PayloadAction,
-} from "@reduxjs/toolkit";
-import { IState } from "../../types/typesState";
-import { fetchChannel, IfetchChannel } from "../asyncAction/createAsyncAction";
-import { Data } from "../../types/typesState";
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchChannel } from "../asyncAction/createAsyncAction";
+import { Data, IState } from "../../types/typesState";
 
-const initialState = {
+const initialState: IState = {
   error: "",
-  loading: true,
+  loading: false,
   data: [],
 };
 
 export const channelSlice = createSlice({
   name: "channel",
   initialState,
-  reducers: {
-    addVal(state, action) {},
-  },
+  reducers: {},
   extraReducers: {
-    [fetchChannel.fulfilled.toString()]: (
-      state,
-      action: PayloadAction<Data[]>
-    ) => {
-      // state.data = action.payload.map((item) => ({
-      //   idVideo: item.id.videoId,
-      //   channelTitle: item.snippet.channelTitle,
-      //   descr: item.snippet.description,
-      // }))
-      console.log(action);
+    [fetchChannel.fulfilled.type]: (state, action) => {
+      state.data = action.payload.map((item: Data) => ({
+        idVideo: item.id.videoId,
+        channelTitle: item.snippet.channelTitle,
+        descr: item.snippet.description,
+      }));
+      state.error = "";
+      state.loading = true;
+      console.log(state.data, state.loading, state.error);
+    },
+    [fetchChannel.pending.type]: (state) => {
+      state.error = "";
+      state.loading = true;
+      console.log(state.data, state.loading, state.error);
+    },
+    [fetchChannel.rejected.type]: (state, action) => {
+      state.error = action.payload;
+      state.loading = true;
+      console.log(state.data, state.loading, state.error);
     },
   },
 });
