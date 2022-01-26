@@ -7,9 +7,10 @@ import Title from "./Title";
 import Button from "./Button";
 import { useAppDispatch } from "../hooks/reduxHooks";
 import { fetchChannel } from "../store/asyncAction/createAsyncAction";
+import Slider from "./Slider";
 
 const StyledMain = styled.main`
-  height: 30vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,6 +31,9 @@ const Main = () => {
   const getValueInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
   };
+
+  const player =
+    '\u003ciframe width="480" height="270" src="//www.youtube.com/embed/9szzQ0r_0FY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen\u003e\u003c/iframe\u003e';
 
   const getValueWitchKeyboard = (
     event: React.KeyboardEvent<HTMLInputElement>
@@ -54,6 +58,7 @@ const Main = () => {
           ></Input>
           <Button onClick={getChanel}></Button>
         </Wrapper>
+        <Slider></Slider>
       </StyledMain>
     </Container>
   );

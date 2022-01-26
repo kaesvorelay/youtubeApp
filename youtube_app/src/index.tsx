@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import Header from "./components/Header";
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 import { fontFace } from "./fonts/fontsExport";
 import Main from "./components/Main";
