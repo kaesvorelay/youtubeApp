@@ -7,10 +7,16 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "../style/style.css";
+import { useAppSelector } from "../hooks/reduxHooks";
+import { channelSlice } from "../store/reducer/reducer";
+import { setupStore } from "../store/store";
 
 SwiperCore.use([Navigation, Pagination, Keyboard]);
 
 const Slider = () => {
+  const state = useAppSelector(setupStore);
+  const getStore = state.getState();
+
   const pagination = {
     clickable: true,
     renderBullet: function (index: number, className: string) {
@@ -19,6 +25,7 @@ const Slider = () => {
   };
   return (
     <>
+      <button onClick={() => console.log(getStore)}>get state</button>
       <Swiper
         tag="section"
         slidesPerView={2}
@@ -40,8 +47,8 @@ const Slider = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            <p>Kuplinov Play</p>
-            <p>Description</p>
+            <p className="channel-title">Kuplinov Play</p>
+            <p className="channel-discription">Description</p>
           </div>
         </SwiperSlide>
         <SwiperSlide tag="li">

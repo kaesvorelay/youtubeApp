@@ -43,8 +43,8 @@ const Main = () => {
     }
   };
 
-  const getChanel = () => {
-    dispatch(fetchChannel(input));
+  const getChanel = async () => {
+    dispatch(await fetchChannel(input));
   };
 
   return (
