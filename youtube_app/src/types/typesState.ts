@@ -1,9 +1,10 @@
+import { IfetchChannel } from "../store/asyncAction/createAsyncAction";
 import { rootReducer, setupStore } from "../store/store";
 
 export interface IState {
   error: string;
   loading: boolean;
-  data: Data[];
+  data: IfetchChannel[];
 }
 
 export type Data = {

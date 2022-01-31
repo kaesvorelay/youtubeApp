@@ -32,9 +32,6 @@ const Main = () => {
     setInput(event.target.value);
   };
 
-  const player =
-    '\u003ciframe width="480" height="270" src="//www.youtube.com/embed/9szzQ0r_0FY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen\u003e\u003c/iframe\u003e';
-
   const getValueWitchKeyboard = (
     event: React.KeyboardEvent<HTMLInputElement>
   ) => {
@@ -44,7 +41,7 @@ const Main = () => {
   };
 
   const getChanel = async () => {
-    dispatch(await fetchChannel(input));
+    dispatch(fetchChannel(input));
   };
 
   return (
@@ -58,7 +55,7 @@ const Main = () => {
           ></Input>
           <Button onClick={getChanel}></Button>
         </Wrapper>
-        <Slider></Slider>
+        <Slider />
       </StyledMain>
     </Container>
   );
