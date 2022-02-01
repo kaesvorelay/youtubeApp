@@ -2,12 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { searchChannel } from "../../api/api";
 import { Data } from "../../types/typesState";
 
-export interface IfetchChannel {
-  idVideo: string;
-  channelTitle: string;
-  descr: string;
-}
-
 export const fetchChannel = createAsyncThunk(
   "channel/getChannel",
   async (channel: string, thunkAPI) => {

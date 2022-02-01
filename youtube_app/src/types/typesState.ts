@@ -1,10 +1,15 @@
-import { IfetchChannel } from "../store/asyncAction/createAsyncAction";
 import { rootReducer, setupStore } from "../store/store";
 
 export interface IState {
   error: string;
   loading: boolean;
   data: IfetchChannel[];
+}
+
+export interface IfetchChannel {
+  idVideo: string;
+  channelTitle: string;
+  descr: string;
 }
 
 export type Data = {
@@ -14,6 +19,15 @@ export type Data = {
   snippet: {
     channelTitle: string;
     description: string;
+  };
+};
+
+export type statisticsData = {
+  statistics: {
+    viewCount: string;
+    likeCount: string;
+    favoriteCount: string;
+    commentCount: string;
   };
 };
 

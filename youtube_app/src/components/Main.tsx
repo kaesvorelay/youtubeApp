@@ -8,6 +8,7 @@ import Button from "./Button";
 import { useAppDispatch } from "../hooks/reduxHooks";
 import { fetchChannel } from "../store/asyncAction/createAsyncAction";
 import Slider from "./Slider";
+import { statisticsVideo } from "../api/api";
 
 const StyledMain = styled.main`
   height: 100%;
@@ -43,11 +44,10 @@ const Main = () => {
   const getChanel = async () => {
     dispatch(fetchChannel(input));
   };
-
   return (
     <Container>
       <StyledMain>
-        <Title>Find a video and download{"\u00A0"}it! Let's go!</Title>
+        <Title>Find a video! Let's go!</Title>
         <Wrapper>
           <Input
             onKeyUp={getValueWitchKeyboard}
