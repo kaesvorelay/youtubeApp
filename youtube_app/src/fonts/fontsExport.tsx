@@ -7,7 +7,7 @@ export function fontFace(
   return `
       @font-face{
           font-family: "${name}";
-          src: url(${src});
+          src: url(${src}), fromat('.ttf');
           font-style: ${fontStyle};
           font-weight: ${fontWeight};
       }

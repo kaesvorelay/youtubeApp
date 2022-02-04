@@ -22,13 +22,14 @@ const StyledSearch = styled.input`
 const Input = (props: {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyUp: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  placeholder: string;
 }) => {
   return (
     <StyledSearch
       onChange={props.onChange}
       onKeyUp={props.onKeyUp}
-      placeholder="Enter need chanel"
       type="text"
+      placeholder={props.placeholder}
     ></StyledSearch>
   );
 };

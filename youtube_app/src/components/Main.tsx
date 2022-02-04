@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import Wrapper from "./Wrapper";
 
 import Container from "./Container";
 import Input from "./Input";
@@ -8,7 +10,6 @@ import Button from "./Button";
 import { useAppDispatch } from "../hooks/reduxHooks";
 import { fetchChannel } from "../store/asyncAction/createAsyncAction";
 import Slider from "./Slider";
-import { statisticsVideo } from "../api/api";
 
 const StyledMain = styled.main`
   height: 100%;
@@ -16,15 +17,6 @@ const StyledMain = styled.main`
   flex-direction: column;
   justify-content: center;
 `;
-
-const StyledWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const Wrapper = ({ children }: { children: React.ReactNode }) => {
-  return <StyledWrapper>{children}</StyledWrapper>;
-};
 
 const Main = () => {
   const dispatch = useAppDispatch();
@@ -52,8 +44,10 @@ const Main = () => {
           <Input
             onKeyUp={getValueWitchKeyboard}
             onChange={getValueInput}
+            placeholder="enter video name"
           ></Input>
           <Button onClick={getChanel}></Button>
+          <Link to="/analytics">GO</Link>
         </Wrapper>
         <Slider />
       </StyledMain>

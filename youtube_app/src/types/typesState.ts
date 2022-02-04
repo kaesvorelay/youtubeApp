@@ -6,6 +6,12 @@ export interface IState {
   data: IfetchChannel[];
 }
 
+export interface IStateAnalytics {
+  error: string;
+  loading: boolean;
+  data: statisticsData[];
+}
+
 export interface IfetchChannel {
   idVideo: string;
   channelTitle: string;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 
 import Container from "./Container";
@@ -10,11 +10,12 @@ const StyledHeader = styled.header`
   flex-direction: column;
 `;
 
-const Header = () => {
+const Header = ({ children }: { children: ReactNode }) => {
   return (
     <Container>
       <StyledHeader>
         <CustomIcon>fromYouTube</CustomIcon>
+        {children}
       </StyledHeader>
     </Container>
   );

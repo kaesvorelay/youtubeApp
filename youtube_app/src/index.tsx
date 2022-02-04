@@ -8,9 +8,12 @@ import { fontFace } from "./fonts/fontsExport";
 import Main from "./components/Main";
 import { Provider } from "react-redux";
 import { setupStore } from "./store/store";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SearchPage from "./pages/SearchPage";
+import AnalyticsPage from "./pages/AnalyticsPage";
 
 const Global = createGlobalStyle`
-${fontFace("Roboto", "../fonts/Roboto/Roboto-Bold.ttf", "normal", "bold")}
+${fontFace("Roboto", "../fonts/Roboto", "normal", "bold")}
 * {
   margin: 0;
   padding: 0;
@@ -28,11 +31,15 @@ const store = setupStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <Global />
-      <Header />
-      <Main />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <Global />
+        <Routes>
+          <Route path="/" element={<SearchPage />} />
+          <Route path="/analytics" element={<AnalyticsPage />} />
+        </Routes>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
