@@ -25,6 +25,11 @@ export type Data = {
   snippet: {
     channelTitle: string;
     description: string;
+    thumbnails: {
+      high: {
+        url: string;
+      };
+    };
   };
 };
 

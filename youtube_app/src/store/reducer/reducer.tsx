@@ -18,6 +18,7 @@ export const channelSlice = createSlice({
         idVideo: item.id.videoId,
         channelTitle: item.snippet.channelTitle,
         descr: item.snippet.description,
+        image: item.snippet.thumbnails.high.url,
       }));
       state.error = "";
       state.loading = true;
