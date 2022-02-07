@@ -9,13 +9,20 @@ export interface IState {
 export interface IStateAnalytics {
   error: string;
   loading: boolean;
-  data: statisticsData[];
+  data: IfetchAnalytics[];
 }
 
 export interface IfetchChannel {
   idVideo: string;
   channelTitle: string;
   descr: string;
+}
+
+export interface IfetchAnalytics {
+  viewCount: string;
+  likeCount: string;
+  favoriteCount: string;
+  commentCount: string;
 }
 
 export type Data = {

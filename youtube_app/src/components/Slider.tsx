@@ -20,14 +20,14 @@ const StyledTitleSlider = styled.h1`
 SwiperCore.use([Navigation, Pagination, Keyboard]);
 
 const Slider = () => {
-  const state = useAppSelector((state) => state.channelSlice.data);
+  const state = useAppSelector((state) => state.channelSlice);
   const pagination = {
     clickable: true,
     renderBullet: function (index: number, className: string) {
       return '<span class="' + className + '">' + (index + 1) + "</span>";
     },
   };
-  if (state.length > 0) {
+  if (state.data.length > 0 && state.loading === true) {
     return (
       <>
         <Swiper
@@ -42,7 +42,7 @@ const Slider = () => {
           navigation={true}
           keyboard={true}
         >
-          {state.map((item) => (
+          {state.data.map((item) => (
             <SwiperSlide tag="li">
               <div className="frame-wrapper">
                 <iframe
@@ -60,6 +60,8 @@ const Slider = () => {
         </Swiper>
       </>
     );
+  } else if (state.loading === false && state.error.length > 0) {
+    return <StyledTitleSlider>Error: {state.error}</StyledTitleSlider>;
   } else {
     return <StyledTitleSlider>Waiting...</StyledTitleSlider>;
   }

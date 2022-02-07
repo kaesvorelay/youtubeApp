@@ -25,7 +25,6 @@ export const statisticsVideo = (id: string): Promise<statisticsData[]> => {
     params: {
       part: "statistics",
       id: id,
-      maxResults: 5,
       key: apiKey,
     },
   }).then((data) => data.data.items);

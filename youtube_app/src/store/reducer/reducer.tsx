@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchChannel } from "../asyncAction/createAsyncAction";
 import { Data, IState } from "../../types/typesState";
 
@@ -13,8 +13,8 @@ export const channelSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchChannel.fulfilled.type]: (state, action) => {
-      state.data = action.payload.map((item: Data) => ({
+    [fetchChannel.fulfilled.type]: (state, action: PayloadAction<Data[]>) => {
+      state.data = action.payload.map((item) => ({
         idVideo: item.id.videoId,
         channelTitle: item.snippet.channelTitle,
         descr: item.snippet.description,
@@ -22,6 +22,7 @@ export const channelSlice = createSlice({
       }));
       state.error = "";
       state.loading = true;
+      console.log(state.data);
     },
     [fetchChannel.pending.type]: (state) => {
       state.error = "";

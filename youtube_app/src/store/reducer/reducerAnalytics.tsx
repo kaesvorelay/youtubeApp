@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { statisticsVideo } from "../../api/api";
 import { IStateAnalytics, statisticsData } from "../../types/typesState";
 import { fetchAnalytics } from "../asyncAction/analyticsAction";
@@ -14,25 +14,27 @@ export const analyticsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchAnalytics.fulfilled.type]: (state, action) => {
-      state.data = action.payload.map((item: statisticsData) => ({
+    [fetchAnalytics.fulfilled.type]: (
+      state,
+      action: PayloadAction<statisticsData[]>
+    ) => {
+      state.data = action.payload.map((item) => ({
         viewCount: item.statistics.viewCount,
         likeCount: item.statistics.likeCount,
-        favoriteCounte: item.statistics.favoriteCount,
+        favoriteCount: item.statistics.favoriteCount,
         commentCount: item.statistics.commentCount,
       }));
       state.error = "";
       state.loading = true;
+      console.log(state.data);
     },
     [fetchAnalytics.pending.type]: (state) => {
       state.error = "";
       state.loading = true;
-      console.log(state.data, state.loading, state.error);
     },
     [fetchAnalytics.rejected.type]: (state, action) => {
       state.error = action.payload;
       state.loading = false;
-      console.log(state.data, state.loading, state.error);
     },
   },
 });
