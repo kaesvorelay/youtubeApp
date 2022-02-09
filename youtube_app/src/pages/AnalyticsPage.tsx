@@ -14,8 +14,19 @@ import { fetchAnalytics } from "../store/asyncAction/analyticsAction";
 const VideoList = () => {
   const store = useAppSelector((state) => state.channelSlice);
   const storeAnalytics = useAppSelector((state) => state.analyticsSlice);
+  const dispatch = useAppDispatch();
 
-  if (storeAnalytics.data.length > 0 && storeAnalytics.loading === true) {
+  const giveIdVideo = () => {
+    let arrIdVideo: string | string[] = store.data.map((item) => item.idVideo);
+    arrIdVideo = _.join(arrIdVideo, ",");
+    dispatch(fetchAnalytics(arrIdVideo));
+  };
+
+  useEffect(() => {
+    giveIdVideo();
+  }, [store.data]);
+
+  if (storeAnalytics.data.length > 0 && storeAnalytics.loading) {
     return (
       <ul>
         {storeAnalytics.data.map((item) => (
@@ -34,9 +45,6 @@ const VideoList = () => {
 };
 
 const AnalyticsPage = () => {
-  const store = useAppSelector((state) => state.channelSlice);
-  const storeAnalytics = useAppSelector((state) => state.analyticsSlice);
-
   const dispatch = useAppDispatch();
   const [input, setInput] = useState<string>("");
 
@@ -50,18 +58,6 @@ const AnalyticsPage = () => {
     if (event.key === "Enter") {
       getChanel();
     }
-  };
-
-  const giveIdVideo = () => {
-    let arrIdVideo: string | string[] = store.data.map((item) => item.idVideo);
-    arrIdVideo = _.join(arrIdVideo, ",");
-    dispatch(fetchAnalytics(arrIdVideo));
-    setTimeout(() => console.log(storeAnalytics.data), 1000);
-  };
-
-  const handleClick = () => {
-    getChanel();
-    giveIdVideo();
   };
 
   const getChanel = () => {
@@ -80,7 +76,7 @@ const AnalyticsPage = () => {
           onKeyUp={getValueWitchKeyboard}
           placeholder="Enter channel"
         ></Input>
-        <Button onClick={handleClick}></Button>
+        <Button onClick={getChanel}></Button>
       </Wrapper>
       <VideoList></VideoList>
     </>

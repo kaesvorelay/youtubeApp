@@ -26,7 +26,6 @@ export const analyticsSlice = createSlice({
       }));
       state.error = "";
       state.loading = true;
-      console.log(state.data);
     },
     [fetchAnalytics.pending.type]: (state) => {
       state.error = "";
