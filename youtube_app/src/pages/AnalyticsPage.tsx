@@ -1,48 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import * as _ from "lodash";
 
 import Button from "../components/Button";
 import Wrapper from "../components/Wrapper";
 import Header from "../components/Header";
 import Title from "../components/Title";
 import Input from "../components/Input";
+import VideoList from "../components/VideoListStatistics";
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
 import { fetchChannel } from "../store/asyncAction/createAsyncAction";
-import { fetchAnalytics } from "../store/asyncAction/analyticsAction";
-
-const VideoList = () => {
-  const store = useAppSelector((state) => state.channelSlice);
-  const storeAnalytics = useAppSelector((state) => state.analyticsSlice);
-  const dispatch = useAppDispatch();
-
-  const giveIdVideo = () => {
-    let arrIdVideo: string | string[] = store.data.map((item) => item.idVideo);
-    arrIdVideo = _.join(arrIdVideo, ",");
-    dispatch(fetchAnalytics(arrIdVideo));
-  };
-
-  useEffect(() => {
-    giveIdVideo();
-  }, [store.data]);
-
-  if (storeAnalytics.data.length > 0 && storeAnalytics.loading) {
-    return (
-      <ul>
-        {storeAnalytics.data.map((item) => (
-          <li>
-            <span>{item.commentCount}</span>
-            <span>{item.favoriteCount}</span>
-            <span>{item.likeCount}</span>
-            <span>{item.viewCount}</span>
-          </li>
-        ))}
-      </ul>
-    );
-  } else {
-    return <h1>????</h1>;
-  }
-};
 
 const AnalyticsPage = () => {
   const dispatch = useAppDispatch();
@@ -78,7 +44,7 @@ const AnalyticsPage = () => {
         ></Input>
         <Button onClick={getChanel}></Button>
       </Wrapper>
-      <VideoList></VideoList>
+      <VideoList />
     </>
   );
 };

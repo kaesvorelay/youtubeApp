@@ -16,6 +16,7 @@ export interface IfetchChannel {
   idVideo: string;
   channelTitle: string;
   descr: string;
+  image: string;
 }
 
 export interface IfetchAnalytics {
@@ -23,6 +24,10 @@ export interface IfetchAnalytics {
   likeCount: string;
   favoriteCount: string;
   commentCount: string;
+}
+
+export interface IPropsChart {
+  items: string[];
 }
 
 export type Data = {
