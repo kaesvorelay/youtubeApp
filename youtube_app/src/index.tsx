@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 import Header from "./components/Header";
 import { createGlobalStyle } from "styled-components";
+import Modal from "./components/Pop-Up/PopUpConyainer";
 
 import { fontFace } from "./fonts/fontsExport";
 import Main from "./components/Main";
@@ -38,6 +39,7 @@ ReactDOM.render(
           <Route path="/" element={<SearchPage />} />
           <Route path="/analytics" element={<AnalyticsPage />} />
         </Routes>
+        <Modal />
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,

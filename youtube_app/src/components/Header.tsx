@@ -1,5 +1,7 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
+import { useAppSelector, useAppDispatch } from "../hooks/reduxHooks";
+import { open } from "../store/reducer/reducerPopUp";
 
 import Container from "./Container";
 import CustomIcon from "./CustomIcon";
@@ -11,10 +13,18 @@ const StyledHeader = styled.header`
 `;
 
 const Header = ({ children }: { children: ReactNode }) => {
+  const store = useAppSelector((state) => state.popUpSlice);
+  const dispatch = useAppDispatch();
+
+  const clickable = () => {
+    dispatch(open());
+    console.log(store.isOpen);
+  };
+
   return (
     <Container>
       <StyledHeader>
-        <CustomIcon>fromYouTube</CustomIcon>
+        <CustomIcon onClick={clickable}>fromYouTube</CustomIcon>
         {children}
       </StyledHeader>
     </Container>
