@@ -47,7 +47,9 @@ const Main = () => {
             placeholder="enter video name"
           ></Input>
           <Button onClick={getChanel}></Button>
-          <Link to="/analytics">GO</Link>
+          <Link className="switch-page" to="/analytics">
+            View statistics or video
+          </Link>
         </Wrapper>
         <Slider />
       </StyledMain>

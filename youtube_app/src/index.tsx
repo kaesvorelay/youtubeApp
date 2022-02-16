@@ -1,12 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Header from "./components/Header";
 import { createGlobalStyle } from "styled-components";
-import Modal from "./components/Pop-Up/PopUpConyainer";
+import Modal from "./components/Pop-Up/PopUpContainer";
 
 import { fontFace } from "./fonts/fontsExport";
-import Main from "./components/Main";
 import { Provider } from "react-redux";
 import { setupStore } from "./store/store";
 import { BrowserRouter, Routes, Route } from "react-router-dom";

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 const StyledSearch = styled.input`
@@ -24,8 +24,15 @@ const Input = (props: {
   onKeyUp: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   placeholder: string;
 }) => {
+  const inputFocus = useRef<HTMLInputElement>(null!);
+
+  useEffect(() => {
+    inputFocus.current?.focus();
+  });
+
   return (
     <StyledSearch
+      ref={inputFocus}
       onChange={props.onChange}
       onKeyUp={props.onKeyUp}
       type="text"

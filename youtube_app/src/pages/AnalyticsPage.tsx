@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Button from "../components/Button";
@@ -18,6 +18,8 @@ const AnalyticsPage = () => {
     setInput(event.target.value);
   };
 
+  const inputFocus = useRef<HTMLInputElement>(null);
+
   const getValueWitchKeyboard = (
     event: React.KeyboardEvent<HTMLInputElement>
   ) => {
@@ -34,7 +36,6 @@ const AnalyticsPage = () => {
     <>
       <Header>
         <Title>Video analytics based on your search results.</Title>
-        <Link to="/">Back</Link>
       </Header>
       <Wrapper>
         <Input
@@ -42,7 +43,11 @@ const AnalyticsPage = () => {
           onKeyUp={getValueWitchKeyboard}
           placeholder="Enter channel"
         ></Input>
+
         <Button onClick={getChanel}></Button>
+        <Link className="switch-page" to="/">
+          View video from youtube
+        </Link>
       </Wrapper>
       <VideoList />
     </>

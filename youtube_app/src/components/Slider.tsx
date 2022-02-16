@@ -1,6 +1,11 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Keyboard, Navigation, Pagination } from "swiper";
+import SwiperCore, {
+  Keyboard,
+  Navigation,
+  Pagination,
+  Swiper as SwiperType,
+} from "swiper";
 import { useAppSelector } from "../hooks/reduxHooks";
 
 import "swiper/css";
@@ -20,7 +25,14 @@ const StyledTitleSlider = styled.h1`
 SwiperCore.use([Navigation, Pagination, Keyboard]);
 
 const Slider = () => {
+  const [slide, setSlide] = useState<SwiperType>();
   const state = useAppSelector((state) => state.channelSlice);
+  useEffect(() => {
+    if (slide) {
+      slide.slideTo(0);
+    }
+  }, [state.data]);
+
   const pagination = {
     clickable: true,
     renderBullet: function (index: number, className: string) {
@@ -41,10 +53,12 @@ const Slider = () => {
           className="mySwiper"
           navigation={true}
           keyboard={true}
+          initialSlide={0}
+          onSwiper={(swiper) => setSlide(swiper)}
         >
-          {state.data.map((item) => (
+          {state.data.map((item, index: number) => (
             <SwiperSlide tag="li">
-              <div className="frame-wrapper">
+              <div id={index.toString()} className="frame-wrapper">
                 <iframe
                   title="player"
                   src={`https://www.youtube.com/embed/${item.idVideo}`}

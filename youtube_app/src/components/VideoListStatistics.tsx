@@ -3,10 +3,15 @@ import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
 import { fetchAnalytics } from "../store/asyncAction/analyticsAction";
 
 import * as _ from "lodash";
-import Wrapper from "./Wrapper";
 import ChartBar from "./Charts/ChartBar";
 import styled from "styled-components";
-import Container from "./Container";
+
+const StyledHeading = styled.h1`
+  text-align: center;
+  color: rgb(250, 237, 198);
+  margin-top: 50px;
+  font-size: 36px;
+`;
 
 const StyledChartWrapp = styled.div`
   width: 100%;
@@ -49,12 +54,12 @@ const VideoList = () => {
     return (
       <>
         <StyledColumn>
-          {storeAnalytics.data.map((item) => (
+          {storeAnalytics.data.map((item, index) => (
             <StyledContentWrap>
               <StyledFigure>
                 <img
+                  alt="channel"
                   src={store.data[storeAnalytics.data.indexOf(item)].image}
-                  alt="picture"
                 />
                 <figcaption>
                   {store.data[storeAnalytics.data.indexOf(item)].descr}
@@ -76,7 +81,7 @@ const VideoList = () => {
       </>
     );
   } else {
-    return <h1>????</h1>;
+    return <StyledHeading>Waiting...</StyledHeading>;
   }
 };
 

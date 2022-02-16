@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { statisticsVideo } from "../../api/api";
 import { IStateAnalytics, statisticsData } from "../../types/typesState";
 import { fetchAnalytics } from "../asyncAction/analyticsAction";
 

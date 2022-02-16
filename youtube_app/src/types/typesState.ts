@@ -24,6 +24,7 @@ export interface IfetchAnalytics {
   likeCount: string;
   favoriteCount: string;
   commentCount: string;
+  index?: number;
 }
 
 export interface IPropsChart {

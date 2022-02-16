@@ -24,7 +24,7 @@ const Header = ({ children }: { children: ReactNode }) => {
   return (
     <Container>
       <StyledHeader>
-        <CustomIcon onClick={clickable}>fromYouTube</CustomIcon>
+        <CustomIcon onClick={clickable}>Log In</CustomIcon>
         {children}
       </StyledHeader>
     </Container>

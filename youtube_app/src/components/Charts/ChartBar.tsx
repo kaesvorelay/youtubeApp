@@ -21,6 +21,9 @@ ChartJS.register(
 
 const ChartBar = (props: IPropsChart) => {
   const options = {
+    layout: {
+      padding: 50,
+    },
     responsive: true,
     plugins: {
       legend: {
