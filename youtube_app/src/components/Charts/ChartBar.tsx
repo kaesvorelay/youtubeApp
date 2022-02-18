@@ -36,7 +36,6 @@ const ChartBar = (props: IPropsChart) => {
   };
 
   const labels = ["view", "like", "favorite", "comment"];
-  console.log(props);
   const data = {
     labels,
     datasets: [

@@ -6,7 +6,7 @@ import Wrapper from "./Wrapper";
 import Container from "./Container";
 import Input from "./Input";
 import Title from "./Title";
-import Button from "./Button";
+import Button from "./Button/Button";
 import { useAppDispatch } from "../hooks/reduxHooks";
 import { fetchChannel } from "../store/asyncAction/createAsyncAction";
 import Slider from "./Slider";
