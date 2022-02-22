@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
-const StyledCustomIcon = styled.button`
+export const StyledCustomIcon = styled.button`
   text-align: center;
   padding: 10px;
   width: 250px;
@@ -26,16 +25,3 @@ const StyledCustomIcon = styled.button`
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 `;
-
-const CustomIcon = (props: {
-  children: React.ReactNode;
-  onClick: (event: React.MouseEvent) => void;
-}) => {
-  return (
-    <StyledCustomIcon onClick={props.onClick}>
-      {props.children}
-    </StyledCustomIcon>
-  );
-};
-
-export default CustomIcon;

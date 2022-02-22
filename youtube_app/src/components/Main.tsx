@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Wrapper from "./Wrapper";
 
-import Container from "./Container";
+import Container from "./Container/Container";
 import Input from "./Input";
 import Title from "./Title";
 import Button from "./Button/Button";

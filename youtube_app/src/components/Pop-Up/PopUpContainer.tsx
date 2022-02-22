@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
-import { open } from "../../store/reducer/reducerPopUp";
+import { setIsOpen } from "../../store/reducer/reducerPopUp";
 import ContentWrapper from "./ConentWrapper";
 import PopUpForm from "./PopUpForm";
 import PopUpInput from "./PopUpInput";
@@ -26,7 +26,7 @@ const Modal = () => {
   ) => {
     if (event.currentTarget === event.target) {
       event.stopPropagation();
-      dispatch(open());
+      dispatch(setIsOpen());
     }
   };
 

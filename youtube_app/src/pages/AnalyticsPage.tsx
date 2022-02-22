@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import Button from "../components/Button/Button";
 import Wrapper from "../components/Wrapper";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import Title from "../components/Title";
 import Input from "../components/Input";
 import VideoList from "../components/VideoListStatistics";

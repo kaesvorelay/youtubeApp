@@ -7,7 +7,6 @@ configure({ adapter: new Adapter() });
 describe("Test Chart component", () => {
   it("should render StyledButton", () => {
     const arr = ["a", "b"];
-
     const component = shallow(<ChartBar items={arr} />);
     const wrap = component.find("ForwardRef");
     expect(wrap.length).toBe(1);

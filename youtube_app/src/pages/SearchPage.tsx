@@ -1,12 +1,10 @@
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import Main from "../components/Main";
 
 const SearchPage = () => {
   return (
     <>
-      <Header>
-        <></>
-      </Header>
+      <Header />
       <Main />
     </>
   );

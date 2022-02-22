@@ -8,11 +8,11 @@ const popUpSlice = createSlice({
   name: "popup",
   initialState,
   reducers: {
-    open(state) {
+    setIsOpen(state) {
       state.isOpen = !state.isOpen;
     },
   },
 });
 
-export const { open } = popUpSlice.actions;
+export const { setIsOpen } = popUpSlice.actions;
 export default popUpSlice.reducer;

@@ -1,4 +1,3 @@
-import React from "react";
 import { StyledButton } from "./ButtonStyled";
 import Button from "./Button";
 import { shallow, configure } from "enzyme";
