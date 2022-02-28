@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { setIsOpen } from "../../store/reducer/reducerPopUp";
-import ContentWrapper from "./ConentWrapper";
+import ContentWrapper from "../ContentWrapper/ConentWrapper";
 import PopUpForm from "./PopUpForm";
 import PopUpInput from "./PopUpInput";
 import SubmitBtn from "./SubmitBtn";

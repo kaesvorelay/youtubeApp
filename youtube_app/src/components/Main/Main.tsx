@@ -1,22 +1,15 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Wrapper from "./Wrapper";
 
-import Container from "./Container/Container";
-import Input from "./Input";
-import Title from "./Title";
-import Button from "./Button/Button";
-import { useAppDispatch } from "../hooks/reduxHooks";
-import { fetchChannel } from "../store/asyncAction/createAsyncAction";
-import Slider from "./Slider";
-
-const StyledMain = styled.main`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
+import { StyledMain } from "./StyledMain";
+import Wrapper from "../Wrapper/Wrapper";
+import Container from "../Container/Container";
+import Input from "../Input/Input";
+import Title from "../Title/Title";
+import Button from "../Button/Button";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { fetchChannel } from "../../store/asyncAction/createAsyncAction";
+import Slider from "../Slider/Slider";
 
 const Main = () => {
   const dispatch = useAppDispatch();

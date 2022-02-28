@@ -6,21 +6,14 @@ import SwiperCore, {
   Pagination,
   Swiper as SwiperType,
 } from "swiper";
-import { useAppSelector } from "../hooks/reduxHooks";
+import { useAppSelector } from "../../hooks/reduxHooks";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import "../style/style.css";
-import styled from "styled-components";
-
-const StyledTitleSlider = styled.h1`
-  text-align: center;
-  color: rgb(250, 237, 198);
-  margin-top: 50px;
-  font-size: 36px;
-`;
+import "../../style/style.css";
+import { StyledTitleSlider } from "./StyledSlider";
 
 SwiperCore.use([Navigation, Pagination, Keyboard]);
 

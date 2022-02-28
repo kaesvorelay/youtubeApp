@@ -1,7 +1,6 @@
-import { ReactNode } from "react";
 import styled from "styled-components";
 
-const StyledContentWrapper = styled.div`
+export const StyledContentWrapper = styled.div`
   position: absolute;
   display: flex;
   justify-content: center;
@@ -14,9 +13,3 @@ const StyledContentWrapper = styled.div`
   padding: auto;
   z-index: 100;
 `;
-
-const ContentWrapper = ({ children }: { children?: ReactNode }) => {
-  return <StyledContentWrapper>{children}</StyledContentWrapper>;
-};
-
-export default ContentWrapper;

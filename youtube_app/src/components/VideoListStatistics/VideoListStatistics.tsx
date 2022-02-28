@@ -1,39 +1,16 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
-import { fetchAnalytics } from "../store/asyncAction/analyticsAction";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
+import { fetchAnalytics } from "../../store/asyncAction/analyticsAction";
 
 import * as _ from "lodash";
-import ChartBar from "./Charts/ChartBar";
-import styled from "styled-components";
-
-const StyledHeading = styled.h1`
-  text-align: center;
-  color: rgb(250, 237, 198);
-  margin-top: 50px;
-  font-size: 36px;
-`;
-
-const StyledChartWrapp = styled.div`
-  width: 100%;
-  height: 100%;
-`;
-const StyledFigure = styled.figure`
-  width: 40%;
-  margin-right: 20px;
-`;
-
-const StyledContentWrap = styled.div`
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-`;
-
-const StyledColumn = styled.div`
-  flex-direction: column;
-  margin-top: 20px;
-  padding: 0 20px;
-`;
+import ChartBar from "../Charts/ChartBar";
+import {
+  StyledChartWrap,
+  StyledColumn,
+  StyledContentWrap,
+  StyledFigure,
+  StyledHeading,
+} from "./StyledVideoListStatistics";
 
 const VideoList = () => {
   const store = useAppSelector((state) => state.channelSlice);
@@ -54,7 +31,7 @@ const VideoList = () => {
     return (
       <>
         <StyledColumn>
-          {storeAnalytics.data.map((item, index) => (
+          {storeAnalytics.data.map((item) => (
             <StyledContentWrap>
               <StyledFigure>
                 <img
@@ -65,7 +42,7 @@ const VideoList = () => {
                   {store.data[storeAnalytics.data.indexOf(item)].descr}
                 </figcaption>
               </StyledFigure>
-              <StyledChartWrapp>
+              <StyledChartWrap>
                 <ChartBar
                   items={[
                     item.viewCount,
@@ -74,7 +51,7 @@ const VideoList = () => {
                     item.commentCount,
                   ]}
                 />
-              </StyledChartWrapp>
+              </StyledChartWrap>
             </StyledContentWrap>
           ))}
         </StyledColumn>

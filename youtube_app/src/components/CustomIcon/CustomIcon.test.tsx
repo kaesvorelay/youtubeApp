@@ -27,4 +27,14 @@ describe("Test CustomIcon component", () => {
     const wrap = component.find(StyledCustomIcon);
     expect(wrap).toHaveLength(1);
   });
+  it("should click or CustomIcon", () => {
+    const foo = jest.fn();
+    const wrap = shallow(
+      <CustomIcon onClick={foo}>
+        <div></div>
+      </CustomIcon>
+    );
+    wrap.find(StyledCustomIcon).simulate("click");
+    expect(foo.mock.calls.length).toBe(1);
+  });
 });
