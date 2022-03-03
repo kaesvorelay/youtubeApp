@@ -1,18 +1,17 @@
 import React, { useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
-import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
-import { setIsOpen } from "../../store/reducer/reducerPopUp";
-import ContentWrapper from "../ContentWrapper/ConentWrapper";
-import PopUpForm from "./PopUpForm";
-import PopUpInput from "./PopUpInput";
-import SubmitBtn from "./SubmitBtn";
-import ExitBtn from "./ExitBtn";
-
-const popup = document.querySelector("#pop-up");
+import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
+import { setIsOpen } from "../../../store/reducer/reducerPopUp";
+import ContentWrapper from "../../ContentWrapper/ConentWrapper";
+import PopUpForm from "../PopUpForm";
+import PopUpInput from "../PopUpInput";
+import SubmitBtn from "../SubmitBtn";
+import ExitBtn from "../ExitBtn";
 
 const Modal = () => {
   const store = useAppSelector((store) => store.popUpSlice);
+  const popup = document.querySelector("#pop-up");
   const dispatch = useAppDispatch();
   const container = useMemo(() => {
     const container = document.createElement("div");

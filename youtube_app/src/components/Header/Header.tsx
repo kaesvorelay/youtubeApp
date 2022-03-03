@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
+
 import { StyledHeader } from "./StyledHeader";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { setIsOpen } from "../../store/reducer/reducerPopUp";
-
 import Container from "../Container/Container";
 import CustomIcon from "../CustomIcon/CustomIcon";
 

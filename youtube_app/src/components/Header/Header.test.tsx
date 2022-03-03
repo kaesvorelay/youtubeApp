@@ -1,14 +1,16 @@
 import { shallow, configure, mount } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
 
+import { setIsOpen } from "../../store/reducer/reducerPopUp";
 import { setupStore } from "../../store/store";
 import Header from "./Header";
 import CustomIcon from "../CustomIcon/CustomIcon";
-import { useAppDispatch } from "../../hooks/reduxHooks";
 
 configure({ adapter: new Adapter() });
 
+const mockStore = configureStore();
 const store = setupStore();
 
 describe("Test Header component", () => {
@@ -24,15 +26,19 @@ describe("Test Header component", () => {
     expect(el.length).toBe(1);
   });
   it("should click or CustomIcon", () => {
-    const foo = jest.fn();
-    const wrap = shallow(
+    const store = mockStore({});
+    const foo = jest.fn(() => store.dispatch(setIsOpen()));
+
+    const wrap = mount(
       <Provider store={store}>
         <Header>
           <CustomIcon onClick={foo}>div</CustomIcon>
         </Header>
       </Provider>
     );
-    wrap.find(CustomIcon).simulate("click");
-    expect(foo.mock.calls.length).toBe(1);
+    wrap.find(CustomIcon).first().simulate("click");
+    const action = store.getActions();
+    const expectedPayload = { type: "popup/setIsOpen", payload: undefined };
+    expect(action).toEqual([expectedPayload]);
   });
 });
